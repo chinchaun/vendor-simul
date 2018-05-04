@@ -230,6 +230,6 @@ app.post('/subscriptions/:serviceId/actions/re-join', (req, res) => {
     })
 });
 
-app.listen(8084, function () {
+app.listen(80, function () {
     console.log('Example app listening on port listening!');
 });
