@@ -1,6 +1,8 @@
 
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
+app.use(bodyParser.json());
 
 app.get('/', function (req, res) {
     res.send('Hello World!');
@@ -15,6 +17,7 @@ app.post('/connect/token', function (req, res) {
 });
 
 app.get('/services', function(req,res){
+    console.log(req);
     res.send({
         "data": {
             "services": [
@@ -55,6 +58,7 @@ app.get('/services', function(req,res){
 })
 
 app.get('/places/:placeId', (req, res )=> {
+    console.log(req);
     res.send( {
         "data": {
             "place": {
@@ -142,6 +146,7 @@ app.get('/places/:placeId', (req, res )=> {
 });
 
 app.get('/services/:serviceId', function (req,res)  {
+    console.log(req);
     res.send( {
         "data": {
             "service": {
@@ -159,6 +164,7 @@ app.get('/services/:serviceId', function (req,res)  {
 });
 
 app.post('/subscriptions/:serviceId', (req, res) =>{
+    console.log(req);
     res.send({
         "data": {
             "subscription": {
@@ -181,6 +187,7 @@ app.post('/subscriptions/:serviceId', (req, res) =>{
 })
 
 app.put('/subscriptions/:serviceId/actions/check-in', (req, res) => {
+    console.log(req);
     res.send({
         "data": {
             "subscription": {
@@ -194,6 +201,7 @@ app.put('/subscriptions/:serviceId/actions/check-in', (req, res) => {
     })
 });
 app.put('/subscriptions/:serviceId/actions/cancel-by-user', (req, res) => {
+    console.log(req);
     res.send({
         "data": {
             "subscription": {
@@ -208,6 +216,7 @@ app.put('/subscriptions/:serviceId/actions/cancel-by-user', (req, res) => {
 
 
 app.post('/subscriptions/:serviceId/actions/re-join', (req, res) => {
+    console.log(req);
     res.send({
         "data": {
             "subscription": {
@@ -230,6 +239,17 @@ app.post('/subscriptions/:serviceId/actions/re-join', (req, res) => {
     })
 });
 
-app.listen(process.env.PORT || 8080, function () {
+const methods = ['get', 'post', 'put', 'delete'];
+
+for (const method of methods) {
+    app[method]('/*',(req, res) => {
+        console.log(req.originalUrl);
+        console.log(req.body);
+        console.log(req.query);
+        res.status(200).send();
+    })
+}
+
+app.listen(process.env.PORT || 8084, function () {
     console.log('Example app listening on port listening!');
 });
