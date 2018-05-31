@@ -24,6 +24,7 @@ app.get('/services', function(req,res){
                 {
                     "service": {
                         "id": "adw-1231-dawdwa",
+                        "vendor_id": "adw-1231-dawdwa1",
                         "name": "Atención al cliente",
                         "waiting_people": 5,
                         "wait_time_in_minutes": 10,
@@ -34,14 +35,15 @@ app.get('/services', function(req,res){
                 },
                 {
                     "service": {
-                        "id": "adw-1231-dawdwa",
-                        "name": "Fila Clientes"
+                        "id": "adw-1231-dawdwa2",
+                        "name": "Fila Clientes",
+                        "vendor_id": "adw-1231-dawdwa",
                     },
                     "node_type": "node",
                     "nodes": [
                         {
                             "service": {
-                                "vendor_id": "adw-1231-dawdwa",
+                                "vendor_id": "adw-1231-dawdwa3",
                                 "name": "Clientes Premium",
                                 "waiting_people": 5,
                                 "wait_time_in_minutes": 5,
@@ -102,6 +104,7 @@ app.get('/places/:placeId', (req, res )=> {
                 "services": [
                     {
                         "service": {
+                            "vendor_id": "adw-1231-dawdwa",
                             "id": "adw-1231-dawdwa",
                             "name": "Atención al cliente",
                             "waiting_people": 5,
