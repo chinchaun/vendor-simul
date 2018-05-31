@@ -16,45 +16,47 @@ app.post('/connect/token', function (req, res) {
         token_type: 'Bearer',});
 });
 
+const services = [
+    {
+        "service": {
+            "id": "adw-1231-dawdwa",
+            "vendor_id": "adw-1231-dawdwa1",
+            "name": "Atención al cliente",
+            "waiting_people": 5,
+            "wait_time_in_minutes": 10,
+            "is_person_id_required": true,
+            "subscription_type": "Normal"
+        },
+        "node_type": "leaf"
+    },
+    {
+        "service": {
+            "id": "adw-1231-dawdwa2",
+            "name": "Fila Clientes",
+            "vendor_id": "adw-1231-dawdwa",
+        },
+        "node_type": "node",
+        "nodes": [
+            {
+                "service": {
+                    "vendor_id": "adw-1231-dawdwa3",
+                    "name": "Clientes Premium",
+                    "waiting_people": 5,
+                    "wait_time_in_minutes": 5,
+                    "is_person_id_required": true,
+                    "subscription_type": "NormalWithCheckIn"
+                },
+                "node_type": "leaf"
+            }
+        ]
+    }
+];
+
 app.get('/services', function(req,res){
     console.log(req);
     res.send({
         "data": {
-            "services": [
-                {
-                    "service": {
-                        "id": "adw-1231-dawdwa",
-                        "vendor_id": "adw-1231-dawdwa1",
-                        "name": "Atención al cliente",
-                        "waiting_people": 5,
-                        "wait_time_in_minutes": 10,
-                        "is_person_id_required": true,
-                        "subscription_type": "Turn | Normal | NormalWithCheckIn"
-                    },
-                    "node_type": "leaf"
-                },
-                {
-                    "service": {
-                        "id": "adw-1231-dawdwa2",
-                        "name": "Fila Clientes",
-                        "vendor_id": "adw-1231-dawdwa",
-                    },
-                    "node_type": "node",
-                    "nodes": [
-                        {
-                            "service": {
-                                "vendor_id": "adw-1231-dawdwa3",
-                                "name": "Clientes Premium",
-                                "waiting_people": 5,
-                                "wait_time_in_minutes": 5,
-                                "is_person_id_required": true,
-                                "subscription_type": "Turn | Normal | NormalWithCheckIn"
-                            },
-                            "node_type": "leaf"
-                        }
-                    ]
-                }
-            ]
+            "services": services
         }
     });
 })
@@ -101,36 +103,7 @@ app.get('/places/:placeId', (req, res )=> {
                     "www.whyline.com.ar"
                 ],
                 "image_link": "www.whyline.com/picture/Adw14632",
-                "services": [
-                    {
-                        "service": {
-                            "vendor_id": "adw-1231-dawdwa",
-                            "id": "adw-1231-dawdwa",
-                            "name": "Atención al cliente",
-                            "waiting_people": 5,
-                            "wait_time_in_minutes": 10
-                        },
-                        "node_type": "leaf"
-                    },
-                    {
-                        "service": {
-                            "vendor_id": "adw-1231-dawdwa",
-                            "name": "Fila Clientes"
-                        },
-                        "node_type": "node",
-                        "nodes": [
-                            {
-                                "service": {
-                                    "id": "adw-1231-dawdwa",
-                                    "name": "Clientes Premium",
-                                    "waiting_people": 5,
-                                    "wait_time_in_minutes": 5
-                                },
-                                "node_type": "leaf"
-                            }
-                        ]
-                    }
-                ],
+                "services": services,
                 "statistics": {
                     "day_congestion": [
                         {
