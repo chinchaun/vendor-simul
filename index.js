@@ -132,7 +132,7 @@ app.get('/services/:serviceId', function (req,res)  {
                 "wait_time_in_minutes": 10,
                 "is_person_id_required": true,
                 "id_type": "dni",
-                "subscription_type": "Turn | Normal | NormalWithCheckIn"
+                "subscription_type": "Normal"
             },
             "node_type": "leaf"
         }
