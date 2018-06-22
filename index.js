@@ -34,6 +34,7 @@ const services = [
             "id": "adw-1231-dawdwa2",
             "name": "Fila Clientes",
             "vendor_id": "adw-1231-dawdwa",
+            "subscription_type": "Normal"
         },
         "node_type": "node",
         "nodes": [
