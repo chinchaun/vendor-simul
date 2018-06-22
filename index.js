@@ -40,7 +40,7 @@ const services = [
         "nodes": [
             {
                 "service": {
-                    "vendor_id": "adw-1231-dawdwa3",
+                    "id": "adw-1231-dawdwa3",
                     "name": "Clientes Premium",
                     "waiting_people": 5,
                     "wait_time_in_minutes": 5,
